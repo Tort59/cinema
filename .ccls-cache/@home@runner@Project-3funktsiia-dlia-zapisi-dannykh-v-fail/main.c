@@ -1,34 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #define LEN 50
+#define COUNT 100
 
 typedef struct
 {
-    char nickname[LEN];
+    char login[LEN];
     char password[LEN];
-}user;
+}users;
 
-void  data_recording(char *str_1, char *str_2)
+// void storing_user_data_in_a_structure(char *str, char *str_1, users *save)
+// {
+//     printf("fdfg    %s", save[1].login);
+// }
+// void authorization_check(char *str, char *str_1, int len)
+// {
+    
+// }
+void writing_to_file(char *str, char *str_1)
 {
     FILE *def = fopen("file_users.txt", "a+");
     if(def != NULL)
     {
-        fprintf(def, "1. %s\n", str_1);
-        fprintf(def, "2. %s\n", str_2);
+        fputs("login: ", def);
+        fputs(str, def);
+        fputs("\n", def);
+        fputs("password:", def);
+        fputs(str_1, def);
+        fputs("\n", def);
     }
-    printf("registration completed successfully");
     fclose(def);
 }
+
+    // Я ТУПОЙ!!!
 int main(void) 
 {
-    printf("login: ");
-    char login[LEN];            // login
+    users user_data[COUNT];
+    char login[LEN], password[LEN];
+    printf("Enter login:\n");
     scanf("%s", login);
-    printf("password: ");
-    char password[LEN];         // password
+    printf("Enter password:\n");
     scanf("%s", password);
-    
-    data_recording(login, password);
-
+    strcpy(user_data[1].login, login);
+    printf("%s", user_data[1].login);
+    // storing_user_data_in_a_structure("qwe", "qwe", user_data);
+    writing_to_file(login, password);
     return 0;
 }

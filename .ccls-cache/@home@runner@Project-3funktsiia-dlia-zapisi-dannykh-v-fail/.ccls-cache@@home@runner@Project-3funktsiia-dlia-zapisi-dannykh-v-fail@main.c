@@ -11,10 +11,10 @@ typedef struct
     char password[LEN];
 }users;
 
-// void storing_user_data_in_a_structure(char *str, char *str_1, users *save)
-// {
-//     printf("fdfg    %s", save[1].login);
-// }
+void storing_user_data_in_a_structure(char *str, char *str_1, users *save)
+{
+    printf("fdfg    %s", save[1].login);
+}
 // void authorization_check(char *str, char *str_1, int len)
 // {
     
@@ -24,10 +24,10 @@ void writing_to_file(char *str, char *str_1)
     FILE *def = fopen("file_users.txt", "a+");
     if(def != NULL)
     {
-        fputs("login: ", def);
+        fputs("1. ", def);
         fputs(str, def);
         fputs("\n", def);
-        fputs("password:", def);
+        fputs("2. ", def);
         fputs(str_1, def);
         fputs("\n", def);
     }
@@ -45,7 +45,7 @@ int main(void)
     scanf("%s", password);
     strcpy(user_data[1].login, login);
     printf("%s", user_data[1].login);
-    // storing_user_data_in_a_structure("qwe", "qwe", user_data);
+    storing_user_data_in_a_structure("qwe", "qwe", user_data);
     writing_to_file(login, password);
     return 0;
 }
